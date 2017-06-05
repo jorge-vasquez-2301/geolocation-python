@@ -18,6 +18,7 @@ class Classroom(Entity):
     def get_corner_coordinates(self, corner):
         return self.cornerCoordinatesMap[corner.name]
 
+
 class Corner(Enum):
     TOP_LEFT = 315
     BOTTOM_RIGHT = 135

@@ -1,5 +1,6 @@
 from math import radians, sqrt, sin, cos, asin, atan2, degrees
 
+
 class ClassroomCoordinatesCalculator:
     EARTHS_RADIUS_IN_METERS = 6371000
     SIZE = 20
@@ -11,17 +12,17 @@ class ClassroomCoordinatesCalculator:
 
     def get_corner_coordinates(self, corner):
         """Returns the coordinates for a given corner"""
-        bearingInRadians = radians(corner.value)
-        sinOfLatitude = sin(self.centerCoordinatesInRadians[0])
-        cosOfLatitude = cos(self.centerCoordinatesInRadians[0])
-        sinOfDistanceEarthRadiusRatio = sin(self.distanceFromCenterToCorner/ClassroomCoordinatesCalculator.EARTHS_RADIUS_IN_METERS)
-        cosOfDistanceEarthRadiusRatio = cos(self.distanceFromCenterToCorner/ClassroomCoordinatesCalculator.EARTHS_RADIUS_IN_METERS)
-        sinOfBearing = sin(bearingInRadians)
-        cosOfBearing = cos(bearingInRadians)
-        latitudeInRadians = asin(sinOfLatitude * cosOfDistanceEarthRadiusRatio +
-                                 cosOfLatitude * sinOfDistanceEarthRadiusRatio * cosOfBearing)
-        longitudeInRadians = self.centerCoordinatesInRadians[1] +\
-                             atan2(sinOfBearing * sinOfDistanceEarthRadiusRatio * cosOfLatitude,
-                                   cosOfDistanceEarthRadiusRatio - sinOfLatitude * sin(latitudeInRadians))
+        bearing_in_radians = radians(corner.value)
+        sin_of_latitude = sin(self.centerCoordinatesInRadians[0])
+        cos_of_latitude = cos(self.centerCoordinatesInRadians[0])
+        sin_of_distance_earth_radius_ratio = sin(self.distanceFromCenterToCorner/ClassroomCoordinatesCalculator.EARTHS_RADIUS_IN_METERS)
+        cos_of_distance_earth_radius_ratio = cos(self.distanceFromCenterToCorner/ClassroomCoordinatesCalculator.EARTHS_RADIUS_IN_METERS)
+        sin_of_bearing = sin(bearing_in_radians)
+        cos_of_bearing = cos(bearing_in_radians)
+        latitude_in_radians = asin(sin_of_latitude * cos_of_distance_earth_radius_ratio +
+                                   cos_of_latitude * sin_of_distance_earth_radius_ratio * cos_of_bearing)
+        longitude_in_radians = self.centerCoordinatesInRadians[1] +\
+                             atan2(sin_of_bearing * sin_of_distance_earth_radius_ratio * cos_of_latitude,
+                                   cos_of_distance_earth_radius_ratio - sin_of_latitude * sin(latitude_in_radians))
 
-        return degrees(latitudeInRadians), degrees(longitudeInRadians)
+        return degrees(latitude_in_radians), degrees(longitude_in_radians)

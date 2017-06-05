@@ -1,8 +1,7 @@
-from com.example.geolocation.Student import Student
-from src.com.example.geolocation.Classroom import Corner, Classroom
+from src.com.example.geolocation.Classroom import Corner
 
 
-def studentClustersInClasses(students, classrooms):
+def student_clusters_in_classes(students, classrooms):
     """Returns students that are in classes with clusters"""
     return list(
         filter(

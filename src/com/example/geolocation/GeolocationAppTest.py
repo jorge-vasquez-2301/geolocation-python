@@ -1,7 +1,7 @@
 import unittest
 
 from com.example.geolocation.Classroom import Classroom
-from com.example.geolocation.GeolocationApp import studentClustersInClasses
+from com.example.geolocation.GeolocationApp import student_clusters_in_classes
 from com.example.geolocation.Student import Student
 
 
@@ -21,7 +21,7 @@ class GeolocationAppTest(unittest.TestCase):
             Student("Jane Graham", (34.069149, -118.442639)),
             Student("Pam Bam", (34.069149, -118.442639))
         ]
-        self.assertCountEqual(students, studentClustersInClasses(students, self.classrooms))
+        self.assertCountEqual(students, student_clusters_in_classes(students, self.classrooms))
 
     def test_one_student_not_in_cluster(self):
         students = [
@@ -29,7 +29,7 @@ class GeolocationAppTest(unittest.TestCase):
             Student("Jane Graham", (34.069149, -118.442639)),
             Student("Pam Bam", (34.071513, -118.441181))
         ]
-        self.assertCountEqual(students[:2], studentClustersInClasses(students, self.classrooms))
+        self.assertCountEqual(students[:2], student_clusters_in_classes(students, self.classrooms))
 
 
 if __name__ == '__main__':
